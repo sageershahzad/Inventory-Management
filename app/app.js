@@ -1,7 +1,10 @@
 /**
- * Created by Deb on 8/20/2014.
+ * Created by Shaz on 01/20/2019.
  */
-(function () {
-    "use strict";
-    var app = angular.module("productManagement",[]);
-}());
+(function() {
+  "use strict";
+  var app = angular.module("productManagement", [
+    "common.services",
+    "productResourceMock"
+  ]);
+})();

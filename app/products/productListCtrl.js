@@ -1,42 +1,18 @@
 /**
- * Created by Deb on 8/20/2014.
+ * Created by shaz on 2/20/2019.
  */
 (function() {
   "use strict";
   angular
     .module("productManagement")
-    .controller("ProductListCtrl", ProductListCtrl);
+    .controller("ProductListCtrl", ["productResource", ProductListCtrl]);
 
-  function ProductListCtrl() {
+  function ProductListCtrl(productResource) {
     var vm = this;
-    vm.products = [
-      {
-        " productId": 1,
-        productName: "Leaf Rake",
-        productCode: "GDN-0011",
-        releaseDate: "March 19, 2019",
-        description: "Leaf rake with 48-inch handle.",
-        cost: 9.0,
-        price: 19.95,
-        category: "garden",
-        tags: ["leaf", "tool"],
-        imageUrl:
-          "http://openclipart.org/image/300px/svg_to_png/26215/Anonymous_Leaf_Rake.png"
-      },
-      {
-        productId: 5,
-        productName: "Hammer",
-        productCode: "TBX-0048",
-        releaseDate: "Jan 21, 2019",
-        description: "Curved claw steel hammer",
-        cost: 1.0,
-        price: 8.99,
-        category: "toolbox",
-        tags: ["tool"],
-        imageUrl:
-          "http://openclipart.org/image/300px/svg_to_png/73/rejon_Hammer.png"
-      }
-    ];
+
+    productResource.query(function(data) {
+      vm.products = data;
+    });
 
     vm.showImage = false;
 
